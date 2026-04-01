@@ -1,0 +1,42 @@
+erDiagram
+    USERS ||--o{ APPLICATIONS : creates
+    COURSES ||--o{ APPLICATIONS : selected_in
+    USERS ||--o{ REVIEWS : writes
+    APPLICATIONS ||--o| REVIEWS : receives
+
+    USERS {
+        int id PK
+        string login UK
+        string password_hash
+        string full_name
+        string phone
+        string email
+        string role
+        datetime created_at
+    }
+
+    COURSES {
+        int id PK
+        string title
+        string description
+        int price
+        datetime created_at
+    }
+
+    APPLICATIONS {
+        int id PK
+        int user_id FK
+        int course_id FK
+        string desired_start_date
+        string payment_method
+        string status
+        datetime created_at
+    }
+
+    REVIEWS {
+        int id PK
+        int application_id FK UK
+        int user_id FK
+        string review_text
+        datetime created_at
+    }
